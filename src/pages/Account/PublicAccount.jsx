@@ -1,10 +1,13 @@
 import { useEffect, useState } from "react"
-import "./Feed.css"
+import "./Account.css"
+import { useParams } from "react-router-dom"
 
-export const Feed = () => {
+export const PublicAccount = () => {
     const [access_token, setAccess_token] = useState(localStorage.getItem("access_token"))
     const [profile, setProfile] = useState()
     const [playlists, setPlaylists] = useState()
+
+    let { userId } = useParams();
 
     const getPlaylists = async (id) => {
         const result = await fetch(`https://api.spotify.com/v1/users/${id}/playlists?offset=0&limit=50`, {
@@ -16,9 +19,10 @@ export const Feed = () => {
         setPlaylists(publicPlaylists)
     }
 
+
     useEffect(() => {
         const getProfile = async () => {
-            const result = await fetch("https://api.spotify.com/v1/me", {
+            const result = await fetch(`https://api.spotify.com/v1/users/${userId}`, {
                 method: "GET", headers: { Authorization: `Bearer ${access_token}` }
             })
             const data = await result.json()
@@ -32,7 +36,6 @@ export const Feed = () => {
 
     return (
         <>
-            <h1>My Account</h1>
             {profile ?
             <div className="profile">
                 <div className="account-details-container">
@@ -68,7 +71,7 @@ export const Feed = () => {
                 <div className="playlists">
                     {playlists.map((playlist, index) => (
                         <div key={index} className="playlist-tile">
-                            <a href={playlist.external_urls.spotify} target="_blank"><img src={playlist.images[0].url} alt="" /></a>
+                            <a href={playlist.external_urls.spotify} target="_blank">{playlist.images !== null && <img src={playlist.images[0].url} alt="" />}</a>
                             <h4>{playlist.name}</h4>
                         </div>
                     ))}

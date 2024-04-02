@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
-import "./Feed.css"
+import "./Account.css"
 
-export const Feed = () => {
+export const UsersAccount = () => {
     const [access_token, setAccess_token] = useState(localStorage.getItem("access_token"))
     const [profile, setProfile] = useState()
     const [playlists, setPlaylists] = useState()

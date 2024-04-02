@@ -49,12 +49,17 @@ const SearchPage = () => {
             </div>
             <div className="results">
                 {result.map((result, index) => (
-                    <a href={result.external_urls.spotify} target="_blank" className="result-tile" key={index}>
+                    <a href={`/songs/${result.id}`} className="result-tile" key={index}>
                         <img src={result.album.images[0].url} alt="" />
                         <div className="result-text">
                             <h3>{result.name}</h3>
                             <p>{result.artists[0].name}</p>
                         </div>
+                        <div className="repost">
+                            <i class="fa-solid fa-share"></i>
+                            <p>Repost</p>
+                        </div>
+                        <a href={result.external_urls.spotify} target="_blank" ><i className="fa-brands fa-spotify fa-2xl"></i></a>
                     </a>
                 ))}
             </div>

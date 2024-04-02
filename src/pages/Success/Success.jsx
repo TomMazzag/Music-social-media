@@ -14,7 +14,7 @@ export const Success = () => {
                 const access_token = await getToken(code, localStorage.getItem("code_verifier"))
                 if (access_token) {
                     localStorage.setItem("access_token", access_token)
-                    navigate("/feed")
+                    navigate("/account")
                 }
             } catch (err) {
                 console.error(err)

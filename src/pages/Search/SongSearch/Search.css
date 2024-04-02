@@ -102,9 +102,14 @@
 .result-tile {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 20px;
     width: 50%;
     color: white;
+}
+
+.result-tile:hover {
+    color: rgba(255, 255, 255, 0.76);
 }
 
 .result-text {
@@ -114,5 +119,14 @@
 
 .result-tile img {
     height: 120px;
+}
+
+.repost {
+    padding: 0 20px;
+}
+
+.repost p {
+    margin: 0;
+    margin-top: 5px;
 }
 
