@@ -7,6 +7,7 @@ import SearchPage from './pages/Search/SongSearch/Search';
 import { UsersAccount } from './pages/Account/UsersAccount';
 import { Follows } from './pages/Account/Connections/Follows';
 import { PublicAccount } from './pages/Account/PublicAccount';
+import { SongPage } from './pages/Music/Songs/SongPage';
 
 const router = createBrowserRouter([
   {
@@ -41,6 +42,10 @@ const router = createBrowserRouter([
     path: "/users/:userId",
     element: <PublicAccount/>,
   },
+  {
+    path: "/songs/:songId",
+    element: <SongPage/>,
+  }
 ]);
 
 function App() {

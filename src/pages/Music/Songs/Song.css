@@ -1,0 +1,32 @@
+#song-page {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+}
+
+.song-details {
+    display: flex;
+    gap: 20px;
+}
+
+.song-details img {
+    height: 200px;
+}
+
+.song-comments {
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.user-comment-box {
+    width: 50%;
+}
+
+#comment-input {
+    width: 100%;
+    color: white;
+}

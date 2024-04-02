@@ -28,6 +28,8 @@ export const Success = () => {
     return (
         <>
             <h1>Welcome to the social music app!</h1>
+
+            <p>Adding login details</p>
         </>
     )
 }
