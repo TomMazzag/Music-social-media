@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import "./Account.css"
+import { refreshToken } from "../../services/login"
 
 export const UsersAccount = () => {
     const [access_token, setAccess_token] = useState(localStorage.getItem("access_token"))
@@ -12,7 +13,7 @@ export const UsersAccount = () => {
         })
         const data = await result.json()
         const publicPlaylists = data.items.filter(item => item.public === true);
-        console.log(publicPlaylists) 
+        // console.log(publicPlaylists) 
         setPlaylists(publicPlaylists)
     }
 
@@ -29,6 +30,11 @@ export const UsersAccount = () => {
         getProfile()
     }, [access_token])
 
+    const getNewToken = async () => {
+        const response = await refreshToken(localStorage.getItem("refresh_token"))
+        localStorage.setItem("access_token", response.access_token)
+        localStorage.setItem("refresh_token", response.refresh_token)
+    }
 
     return (
         <>
@@ -63,6 +69,8 @@ export const UsersAccount = () => {
                         <p>1452 songs linked</p>
                     </div>
                 </div>
+
+                <button onClick={getNewToken}>Refresh Token</button>
 
                 {playlists &&
                 <div className="playlists">

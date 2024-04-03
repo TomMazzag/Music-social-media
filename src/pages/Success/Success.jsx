@@ -11,9 +11,10 @@ export const Success = () => {
     useEffect(() => {
         const tokenAsync = async () => {
             try {
-                const access_token = await getToken(code, localStorage.getItem("code_verifier"))
-                if (access_token) {
-                    localStorage.setItem("access_token", access_token)
+                const response = await getToken(code, localStorage.getItem("code_verifier"))
+                if (response) {
+                    localStorage.setItem("access_token", response.access_token)
+                    localStorage.setItem("refresh_token", response.refresh_token)
                     navigate("/account")
                 }
             } catch (err) {

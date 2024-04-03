@@ -1,3 +1,5 @@
+import { refreshToken } from "../../services/login";
+
 export const Welcome = () => {
     const authorize = async () => {
         try {
@@ -49,10 +51,18 @@ export const Welcome = () => {
         }
     }
 
+    const getNewToken = async () => {
+        const response = await refreshToken(localStorage.getItem("refresh_token"))
+        localStorage.setItem("access_token", response.access_token)
+        localStorage.setItem("refresh_token", response.refresh_token)
+    }
+
     return (
         <>
             <h1>Spotify App</h1>
             <button onClick={authorize}>Click here to begin</button>
+
+            <button onClick={getNewToken}>Refresh Token</button>
         </>
     )
 }

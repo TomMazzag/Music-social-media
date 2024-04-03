@@ -24,7 +24,6 @@ const SearchPage = () => {
             .then((data) => {
                 const category = searchCategory.toLowerCase() + "s"
                 setResult(data[category].items)
-                console.log(data[category].items)
             })
         }
     }, [searchCategory, searchInput])
