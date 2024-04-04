@@ -26,7 +26,15 @@ export const Welcome = () => {
         const hashed = await sha256(codeVerifier)
         const codeChallenge = base64encode(hashed);
 
-        const clientId = import.meta.env.VITE_CLIENT_ID;
+        var clientId = ""
+        if (process.env.NETLIFY === 'true') {
+            // run something during build
+            clientId = process.env.VITE_CLIENT_ID;
+            console.log("running with netlify")
+        } else {
+            // run something else
+            clientId = import.meta.env.VITE_CLIENT_ID;
+        }
         const redirectUri = 'http://localhost:5173/success';
 
         const scope = 'user-read-private user-read-email playlist-read-collaborative playlist-read-private';
