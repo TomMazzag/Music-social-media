@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import "./Song.css"
+import { getNewToken } from "../../../components/tokenGen";
 
 export const SongPage = () => {
     
@@ -16,8 +17,15 @@ export const SongPage = () => {
         })
         .then(response => response.json())
         .then((data) => {
-            console.log(data)
-            setSong(data)
+            if(data.error) {
+                if (data.error.status === 401) {
+                    console.log("Generating new token")
+                    getNewToken()
+                } 
+            } else {
+                console.log(data)
+                setSong(data)
+            }
         })
     }, [])
 
@@ -29,7 +37,7 @@ export const SongPage = () => {
                 <div>
                     <h1>{song.name}</h1>
                     {song.artists.map((artist, index) => (
-                        <h2>{artist.name}</h2>
+                        <h2 key={index}>{artist.name}</h2>
                     ))}
                 </div>
             </div>

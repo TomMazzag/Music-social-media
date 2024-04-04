@@ -23,9 +23,15 @@ export const UsersAccount = () => {
                 method: "GET", headers: { Authorization: `Bearer ${access_token}` }
             })
             const data = await result.json()
-            //console.log(data) 
-            setProfile(data)
-            getPlaylists(data.id)
+            if(data.error) {
+                if (data.error.status === 401) {
+                    console.log("Generating new token")
+                    getNewToken()
+                } 
+            } else {
+                setProfile(data)
+                getPlaylists(data.id)
+            }
         }
         getProfile()
     }, [access_token])
