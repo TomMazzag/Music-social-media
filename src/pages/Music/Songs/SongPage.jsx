@@ -18,6 +18,7 @@ export const SongPage = () => {
         .then(response => response.json())
         .then((data) => {
             if(data.error) {
+                console.log(data.error)
                 if (data.error.status === 401) {
                     console.log("Generating new token")
                     getNewToken()

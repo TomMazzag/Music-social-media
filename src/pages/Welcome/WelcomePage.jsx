@@ -27,7 +27,6 @@ export const Welcome = () => {
         const codeChallenge = base64encode(hashed);
 
         const clientId = import.meta.env.VITE_CLIENT_ID;
-        console.log(clientId)
         const redirectUri = 'http://localhost:5173/success';
 
         const scope = 'user-read-private user-read-email playlist-read-collaborative playlist-read-private';

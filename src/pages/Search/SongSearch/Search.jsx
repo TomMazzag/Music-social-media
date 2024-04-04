@@ -55,7 +55,7 @@ const SearchPage = () => {
                             <p>{result.artists[0].name}</p>
                         </div>
                         <div className="repost">
-                            <i class="fa-solid fa-share"></i>
+                            <i className="fa-solid fa-share"></i>
                             <p>Repost</p>
                         </div>
                         <a href={result.external_urls.spotify} target="_blank" ><i className="fa-brands fa-spotify fa-2xl"></i></a>
