@@ -64,6 +64,11 @@ export const Welcome = () => {
         localStorage.setItem("refresh_token", response.refresh_token)
     }
 
+    console.log("Netlify? " + process.env.NETLIFY)
+    if (process.env.NETLIFY === 'true') {
+        console.log("Running on netlify")
+    }
+
     return (
         <>
             <h1>Spotify App</h1>
