@@ -66,6 +66,7 @@ export const Welcome = () => {
 
     console.log("Netlify? " + process.env.NETLIFY)
     console.log("Other env vars: " + process.env.VITE_CLIENT_ID)
+    console.log("Test var: " + process.env.TEST_VAR)
     if (process.env.NETLIFY === 'true') {
         console.log("Running on netlify")
     }
