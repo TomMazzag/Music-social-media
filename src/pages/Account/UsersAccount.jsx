@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import "./Account.css"
-import { refreshToken } from "../../services/login"
+import { refreshToken } from "../../services/token"
 
 export const UsersAccount = () => {
     const [access_token, setAccess_token] = useState(localStorage.getItem("access_token"))

@@ -1,0 +1,8 @@
+.account-creation-steps {
+    display: flex;
+    justify-content: center;
+}
+
+.MuiStepLabel-label {
+    color: white;
+}

@@ -1,4 +1,4 @@
-import { refreshToken } from "../../services/login";
+import { refreshToken } from "../../services/token";
 
 export const Welcome = () => {
     const authorize = async () => {
@@ -27,15 +27,16 @@ export const Welcome = () => {
         const codeChallenge = base64encode(hashed);
 
         var clientId = ""
-        if (process.env.NETLIFY === 'true') {
-            // run something during build
-            clientId = process.env.VITE_CLIENT_ID;
-            console.log("running with netlify")
-        } else {
+        var redirectUri = 'http://localhost:5173/success';
+        // if (process.env.NETLIFY === 'true') {
+        //     // run something during build
+        //     clientId = process.env.VITE_CLIENT_ID;
+        //     redirectUri = 'https://musicme-test.netlify.app/success';
+        //     console.log("running with netlify")
+        // } else {
             // run something else
             clientId = import.meta.env.VITE_CLIENT_ID;
-        }
-        const redirectUri = 'http://localhost:5173/success';
+        // }
 
         const scope = 'user-read-private user-read-email playlist-read-collaborative playlist-read-private';
         const authUrl = new URL("https://accounts.spotify.com/authorize")
@@ -62,13 +63,6 @@ export const Welcome = () => {
         const response = await refreshToken(localStorage.getItem("refresh_token"))
         localStorage.setItem("access_token", response.access_token)
         localStorage.setItem("refresh_token", response.refresh_token)
-    }
-
-    console.log("Netlify? " + process.env.NETLIFY)
-    console.log("Other env vars: " + process.env.VITE_CLIENT_ID)
-    console.log("Test var: " + process.env.TEST_VAR)
-    if (process.env.NETLIFY === 'true') {
-        console.log("Running on netlify")
     }
 
     return (

@@ -8,6 +8,7 @@ import { UsersAccount } from './pages/Account/UsersAccount';
 import { Follows } from './pages/Account/Connections/Follows';
 import { PublicAccount } from './pages/Account/PublicAccount';
 import { SongPage } from './pages/Music/Songs/SongPage';
+import { CreateAccount } from './pages/Account/CreateAccount';
 
 const router = createBrowserRouter([
   {
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
   {
     path: "/account",
     element: <UsersAccount />,
+  },
+  {
+    path: "/account/create",
+    element: <CreateAccount />,
   },
   {
     path: "/user/:userId/followers",
