@@ -19,10 +19,6 @@
     color: gray !important;
 }
 
-.step-details-container {
-    min-height: 55vh;
-}
-
 .step-movement {
     display: flex;
     justify-content: space-between;

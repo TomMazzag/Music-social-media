@@ -33,11 +33,11 @@ export const CreateAccount = () => {
     const showStep = (step) => {
         switch(step) {
             case 1 :
-                return <StepOne spotifyAccountDetails={profile}/>
+                return <StepOne spotifyAccountDetails={profile} setActiveStep={setActiveStep}/>
             case 2 :
-                return <StepTwo spotifyAccountDetails={profile}/>
+                return <StepTwo spotifyAccountDetails={profile} setActiveStep={setActiveStep}/>
             case 3 :
-                return <StepThree spotifyAccountDetails={profile}/>
+                return <StepThree spotifyAccountDetails={profile} setActiveStep={setActiveStep}/>
         }
     }
 
@@ -78,10 +78,10 @@ export const CreateAccount = () => {
             <div className="step-details-container">
                 {showStep(activeStep + 1)}
             </div>
-            <div className="step-movement">
+            {/* <div className="step-movement">
                 <button disabled={activeStep === 0} onClick={previousStep}>Previous</button>
                 <button onClick={nextStep}>{activeStep === 3 - 1 ? 'Finish' : 'Next'}</button>
-            </div>
+            </div> */}
         </div>
     )
 }
