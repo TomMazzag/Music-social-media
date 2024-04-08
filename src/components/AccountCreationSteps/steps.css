@@ -1,0 +1,10 @@
+.step-instructions-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.step-instructions-container img {
+    width: 200px;
+    margin-bottom: 20px;
+}

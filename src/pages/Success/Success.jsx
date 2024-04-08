@@ -17,11 +17,7 @@ export const Success = () => {
                     localStorage.setItem("access_token", response.access_token)
                     localStorage.setItem("refresh_token", response.refresh_token)
 
-                    const result = await fetch("https://api.spotify.com/v1/me", {
-                        method: "GET", headers: { Authorization: `Bearer ${response.access_token}` }
-                    })
-                    const data = await result.json()
-                    const token = await login(data.id)
+                    const token = await login(response.access_token)
                     
                     if (token.error) {
                         navigate("/account/create")

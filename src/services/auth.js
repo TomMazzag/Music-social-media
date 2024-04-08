@@ -1,8 +1,8 @@
 const backend_url = "http://localhost:3000"
 
-export const login = async (spotify_id) => {
+export const login = async (access_token) => {
     const payload = {
-        spotify_id
+        access_token
     }
 
     const requestOptions = {
