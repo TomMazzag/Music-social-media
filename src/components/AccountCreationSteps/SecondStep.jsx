@@ -1,25 +1,23 @@
-import { useContext } from "react"
 import "./steps.css"
 
-export const StepTwo = ({spotifyAccountDetails}) => {
+export const StepTwo = ({spotifyAccountDetails, setActiveStep, updateAccountDetails}) => {
 
     return (
-        <form className="create-account-form">
+        <div className="create-account-form">
             <div className="step-instructions-container">
                 <h2>Step two</h2>
 
-                <p>Note: Use image from spotify or choose your own!</p>
+                <p>Note: Use profile pic from spotify or choose your own!</p>
                 {spotifyAccountDetails && 
                 <img src={spotifyAccountDetails.images[1].url} alt="" />
                 }
-
                 <button>Change Image</button>
 
             </div>
             <div className="step-movement">
-                    <button disabled={true}>Previous</button>
-                    <button>Next</button>
+                    <button onClick={() => {setActiveStep(0)}}>Previous</button>
+                    <button onClick={() => {updateAccountDetails({profile_url: spotifyAccountDetails.images[1].url}); setActiveStep(2)}}>Next</button>
             </div>
-        </form>
+        </div>
     )
 }

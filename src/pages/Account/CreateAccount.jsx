@@ -29,33 +29,35 @@ export const CreateAccount = () => {
 
     const [activeStep, setActiveStep] = useState(0);
     const navigate = useNavigate()
+    const [accountDetails, setAccountDetails] = useState({})
+
+    const updateAccountDetails = (data) => {
+        console.log(data)
+        setAccountDetails((prevAccountDetails) => prevAccountDetails + data)
+    }
 
     const showStep = (step) => {
         switch(step) {
             case 1 :
-                return <StepOne spotifyAccountDetails={profile} setActiveStep={setActiveStep}/>
+                return <StepOne spotifyAccountDetails={profile} setActiveStep={setActiveStep} updateAccountDetails={updateAccountDetails}/>
             case 2 :
-                return <StepTwo spotifyAccountDetails={profile} setActiveStep={setActiveStep}/>
+                return <StepTwo spotifyAccountDetails={profile} setActiveStep={setActiveStep} updateAccountDetails={updateAccountDetails}/>
             case 3 :
-                return <StepThree spotifyAccountDetails={profile} setActiveStep={setActiveStep}/>
+                return <StepThree spotifyAccountDetails={profile} setActiveStep={setActiveStep} updateAccountDetails={updateAccountDetails}/>
         }
     }
 
     const nextStep = () => {
-
         if (activeStep === 2) {
             //Add in logic for creating user in DB
             //Get user a platform token
             //Then navigate to account page
             navigate("/account")
         }
-
         setActiveStep((prevActiveStep) => prevActiveStep + 1)
     }
 
-    const previousStep = () => {
-        setActiveStep((prevActiveStep) => prevActiveStep - 1)
-    }
+
 
     return (
         <div className="create-account-page">
@@ -78,10 +80,6 @@ export const CreateAccount = () => {
             <div className="step-details-container">
                 {showStep(activeStep + 1)}
             </div>
-            {/* <div className="step-movement">
-                <button disabled={activeStep === 0} onClick={previousStep}>Previous</button>
-                <button onClick={nextStep}>{activeStep === 3 - 1 ? 'Finish' : 'Next'}</button>
-            </div> */}
         </div>
     )
 }

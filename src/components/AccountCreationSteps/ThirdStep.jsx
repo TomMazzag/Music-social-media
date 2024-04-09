@@ -1,14 +1,16 @@
-import { useContext } from "react"
 
-export const StepThree = ({spotifyAccountDetails}) => {
+
+export const StepThree = ({spotifyAccountDetails, setActiveStep, updateAccountDetails}) => {
     return (
-        <form className="create-account-form">
+        <div className="create-account-form">
             <h2>Final Step</h2>
 
+            <p>Account details completediv</p>
+
             <div className="step-movement">
-                    <button disabled={true}>Previous</button>
-                    <button>Next</button>
+                    <button onClick={() => {setActiveStep(1)}}>Previous</button>
+                    <button>Finish</button>
                 </div>
-        </form>
+        </div>
     )
 }
