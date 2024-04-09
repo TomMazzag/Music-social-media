@@ -16,3 +16,21 @@
     justify-content: space-between;
 }
 
+.first-page-options {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.input-and-label-container {
+    display: flex;
+    align-self: center;
+    justify-content: space-between;
+    width: 500px;
+}
+
+.input-and-label-container input {
+    padding: 5px;
+}
+
+

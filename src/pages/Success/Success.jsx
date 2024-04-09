@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { getToken } from "../../services/token";
 import { useNavigate } from "react-router-dom";
 import { login } from "../../services/auth";
+import PropagateLoader from "react-spinners/PropagateLoader"
+import "./Success.css"
 
 export const Success = () => {
     
@@ -35,10 +37,13 @@ export const Success = () => {
     }, [])
 
     return (
-        <>
+        <div className="success-redirect">
             <h1>Welcome to the social music app!</h1>
+          
+            <p>Loading</p>
 
-            <p>Adding login details</p>
-        </>
+            <PropagateLoader color="lightgreen"/>
+           
+        </div>
     )
 }

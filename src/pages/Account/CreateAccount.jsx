@@ -33,7 +33,11 @@ export const CreateAccount = () => {
 
     const updateAccountDetails = (data) => {
         console.log(data)
-        setAccountDetails((prevAccountDetails) => prevAccountDetails + data)
+        setAccountDetails((prevAccountDetails) => ({ ...prevAccountDetails, ...data }))
+    }
+
+    const logUserDetails = () => {
+        console.log(accountDetails)
     }
 
     const showStep = (step) => {
@@ -43,7 +47,7 @@ export const CreateAccount = () => {
             case 2 :
                 return <StepTwo spotifyAccountDetails={profile} setActiveStep={setActiveStep} updateAccountDetails={updateAccountDetails}/>
             case 3 :
-                return <StepThree spotifyAccountDetails={profile} setActiveStep={setActiveStep} updateAccountDetails={updateAccountDetails}/>
+                return <StepThree setActiveStep={setActiveStep} updateAccountDetails={updateAccountDetails} logUserDetails={logUserDetails}/>
         }
     }
 

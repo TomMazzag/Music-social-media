@@ -21,7 +21,7 @@ export const getToken = async (code, codeVerifier) => {
         const body = await fetch(url, payload);
         const response =await body.json();
         if (response.access_token !== undefined) {
-            console.log(response)
+            //console.log(response)
             return {
                 "access_token" : response.access_token,
                 "refresh_token" : response.refresh_token

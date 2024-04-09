@@ -30,7 +30,7 @@ export const UsersAccount = () => {
                 } 
             } else {
                 setProfile(data)
-                console.log(data)
+                //console.log(data)
                 getPlaylists(data.id)
             }
         }

@@ -28,15 +28,14 @@ export const Welcome = () => {
 
         var clientId = ""
         var redirectUri = 'http://localhost:5173/success';
-        // if (process.env.NETLIFY === 'true') {
-        //     // run something during build
-        //     clientId = process.env.VITE_CLIENT_ID;
-        //     redirectUri = 'https://musicme-test.netlify.app/success';
-        //     console.log("running with netlify")
-        // } else {
-            // run something else
+        if (process.env.NETLIFY === 'true') {
+            // run something during build
+            clientId = process.env.VITE_CLIENT_ID;
+            redirectUri = 'https://musicme-test.netlify.app/success';
+            console.log("running with netlify")
+        } else {
             clientId = import.meta.env.VITE_CLIENT_ID;
-        // }
+        }
 
         const scope = 'user-read-private user-read-email playlist-read-collaborative playlist-read-private';
         const authUrl = new URL("https://accounts.spotify.com/authorize")
