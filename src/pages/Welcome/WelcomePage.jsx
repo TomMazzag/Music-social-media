@@ -35,6 +35,7 @@ export const Welcome = () => {
         //     console.log("running with netlify")
         // } else {
             clientId = import.meta.env.VITE_CLIENT_ID;
+            
         //}
 
         const scope = 'user-read-private user-read-email playlist-read-collaborative playlist-read-private';
@@ -74,8 +75,8 @@ export const Welcome = () => {
 
             <p>Netlify env var {process.env.NETLIFY}</p>
             <p>Test env var {process.env.TEST_VAR}</p>
-            <p>Test env var vite_netlify {process.env.VITE_NETLIFY_TEST}</p>
-            <p>Test env var netlify_test {process.env.NETLIFY_TEST_VAR}</p>
+            <p>Test env var vite_netlify {import.meta.env.VITE_NETLIFY_TEST}</p>
+            <p>Test env var netlify_test {import.meta.env.NETLIFY_TEST_VAR}</p>
             
         </>
     )
