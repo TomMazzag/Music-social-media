@@ -72,7 +72,8 @@ export const Welcome = () => {
 
             <button onClick={getNewToken}>Refresh Token</button>
 
-            {process.env.NETLIFY}
+            <p>Netlify env var {process.env.NETLIFY}</p>
+            <p>Test env var {process.env.TEST_VAR}</p>
         </>
     )
 }
