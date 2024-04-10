@@ -74,6 +74,9 @@ export const Welcome = () => {
 
             <p>Netlify env var {process.env.NETLIFY}</p>
             <p>Test env var {process.env.TEST_VAR}</p>
+            <p>Test env var vite_netlify {process.env.VITE_NETLIFY_TEST}</p>
+            <p>Test env var netlify_test {process.env.NETLIFY_TEST_VAR}</p>
+            
         </>
     )
 }
