@@ -1,5 +1,5 @@
 export const getToken = async (code, codeVerifier) => {
-    const redirectUri = 'http://localhost:5173/success';
+    var redirectUri = 'http://localhost:5173/success';
     const payload = {
         method: 'POST',
         headers: {
