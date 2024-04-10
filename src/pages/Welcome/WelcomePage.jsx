@@ -26,17 +26,9 @@ export const Welcome = () => {
         const hashed = await sha256(codeVerifier)
         const codeChallenge = base64encode(hashed);
 
-        var clientId = ""
-        var redirectUri = 'http://localhost:5173/success';
-        // if (process.env.NETLIFY === 'true') {
-        //     // run something during build
-        //     clientId = process.env.VITE_CLIENT_ID;
-        //     redirectUri = 'https://musicme-test.netlify.app/success';
-        //     console.log("running with netlify")
-        // } else {
-            clientId = import.meta.env.VITE_CLIENT_ID;
-            
-        //}
+        const redirectUri = import.meta.env.VITE_REDIRECT_URI
+        const clientId = import.meta.env.VITE_CLIENT_ID;
+
 
         const scope = 'user-read-private user-read-email playlist-read-collaborative playlist-read-private';
         const authUrl = new URL("https://accounts.spotify.com/authorize")
@@ -72,11 +64,6 @@ export const Welcome = () => {
             <button onClick={authorize}>Click here to begin</button>
 
             <button onClick={getNewToken}>Refresh Token</button>
-
-            <p>Netlify env var {process.env.NETLIFY}</p>
-            <p>Test env var {process.env.TEST_VAR}</p>
-            <p>Test env var vite_netlify {import.meta.env.VITE_NETLIFY_TEST}</p>
-            <p>Test env var netlify_test {import.meta.env.NETLIFY_TEST_VAR}</p>
             
         </>
     )
